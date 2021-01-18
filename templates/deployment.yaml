@@ -55,3 +55,7 @@ spec:
         - name: config-volume
           configMap:
             name: {{ template "spark-hs.fullname" . }}-spark-hs-config
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
